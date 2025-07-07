@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ name }} - Resume</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+      color: #333;
+      max-width: 850px;
+      margin: auto;
+    }
+    
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 10px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #2c3e50;
+    }
+    
+    .contact {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    
+    .section {
+      margin-top: 30px;
+    }
+    
+    .section h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      color: #2c3e50;
+      font-size: 20px;
+    }
+    
+    .skills ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .skills li {
+      display: inline-block;
+      margin: 5px 10px 5px 0;
+      background-color: #2c3e50;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    
+    .experience, .education {
+      margin-top: 15px;
+    }
+    
+    .experience-item, .education-item {
+      margin-bottom: 15px;
+    }
+    
+    .job-title, .degree {
+      font-weight: bold;
+      color: #34495e;
+    }
+    
+    .company, .school {
+      font-style: italic;
+      font-size: 14px;
+      color: #777;
+    }
+    
+    .date {
+      float: right;
+      font-size: 13px;
+      color: #999;
+    }
+    
+    .summary p {
+      margin-top: 0;
+    }
+    
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>{{ name }}</h1>
+    <div class="contact">
+      <p>Email: {{ email }} | Phone: {{ phone }}</p>
+    </div>
+  </div>
+  
+  <div class="section summary">
+    <h2>Professional Summary</h2>
+    <p>{{ summary }}</p>
+  </div>
+  
+  <div class="section skills">
+    <h2>Skills</h2>
+    <ul>
+      {% for skill in skills %}
+      <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <div class="section experience">
+    <h2>Work Experience</h2>
+    {% for exp in experience %}
+    <div class="experience-item">
+      <span class="job-title">{{ exp.title }}</span>
+      <span class="date">{{ exp.years }}</span>
+      <div class="clear"></div>
+      <span class="company">{{ exp.company }}</span>
+      <p>{{ exp.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <div class="section education">
+    <h2>Education</h2>
+    {% for edu in education %}
+    <div class="education-item">
+      <span class="degree">{{ edu.degree }}</span>
+      <span class="date">{{ edu.years }}</span>
+      <div class="clear"></div>
+      <span class="school">{{ edu.institute }}</span>
+      <p>{{ edu.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
