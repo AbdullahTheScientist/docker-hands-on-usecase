@@ -1,8 +1,9 @@
 FROM python:3.9-slim
 
-# Install system dependencies
+# Install system dependencies including wkhtmltopdf
 RUN apt-get update && apt-get install -y \
     wkhtmltopdf \
+    xvfb \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -23,5 +24,9 @@ RUN mkdir -p templates generated_resumes
 # Expose port
 EXPOSE 8000
 
+# Create startup script
+RUN echo '#!/bin/bash\nPORT=${PORT:-8000}\nexec gunicorn app:app -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$PORT' > /start.sh
+RUN chmod +x /start.sh
+
 # Run the application
-CMD ["gunicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+CMD ["/start.sh"]

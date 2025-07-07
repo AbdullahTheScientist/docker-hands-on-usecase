@@ -3,6 +3,10 @@ import pdfkit
 import os
 import uuid
 import platform
+import pdfkit
+
+# Configuration for Docker environment
+
 
 def generate_resume(data):
     """
@@ -13,8 +17,8 @@ def generate_resume(data):
     # Configure wkhtmltopdf based on environment
     if platform.system() == "Windows":
         # Local development on Windows
-        path_to_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
-        config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+        path_to_wkhtmltopdf = r"C:\Progr/am Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+        config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
     else:
         # Production environment (Linux/Render)
         # wkhtmltopdf will be installed via apt-get in render.yaml
