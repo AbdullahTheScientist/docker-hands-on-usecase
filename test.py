@@ -493,8 +493,8 @@ data = {
 }
 
 # Add profile picture if available
-if profile_image_base64:
-    data["photo"] = profile_image_base64
+# if profile_image_base64:
+#     data["photo"] = profile_image_base64
 
 
 def test_health_check():
