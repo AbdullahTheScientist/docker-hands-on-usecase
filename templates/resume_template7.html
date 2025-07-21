@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ personal_info.name }} - Resume</title>
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Remove all page margins */
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    /* background-color: #f4f6f8; */
+    color: #2e2e2e;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-container {
+    max-width: none; /* Remove max-width constraint */
+    margin: 0; /* Remove auto margins */
+    background-color: #ffffff;
+    box-shadow: none; /* Remove shadow since we're going full width */
+    width: 100%;
+  }
+
+    .header {
+    background-color: #48fab9;
+    color: #11193b;
+    width: 100%;
+    padding: 20px 15px;
+    }
+
+    .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the whole block */
+    gap: 20px;
+    text-align: center; /* Ensures the text inside header-text is centered */
+    flex-wrap: wrap;
+    }
+
+    .header-text {
+    flex-grow: 1;
+    text-align: center;
+    }
+
+
+    .profile-photo-container {
+    width: 120px;
+    height: 120px;
+    margin-top: 10px; /* ONLY photo moves down */
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+    flex-shrink: 0;
+    }
+
+    .profile-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .header-text h1, .header-text p {
+    margin: 0;
+    }
+
+
+  .header h1 {
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+
+  .header .title {
+    font-size: 14px;
+    font-weight: 400;
+    color: #11193b;
+  }
+
+  .contact-info {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .contact-links {
+    margin-top: 5px;
+  }
+
+  .contact-links a {
+    color: #11193b;
+    text-decoration: underline;
+    margin: 0 6px;
+    font-size: 12px;
+  }
+
+  .two-column {
+    display: flex;
+    flex-direction: row;
+    min-height: 400px;
+  }
+
+  .main-content {
+    flex: 2;
+    padding: 20px;
+    order: 1;
+  }
+
+  .sidebar {
+    flex: 1;
+    background-color: #f0f3f7;
+    padding: 20px;
+    order: 2;
+    min-width: 250px;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+
+  .section h2 {
+    font-size: 16px;
+    color: #0a2342;
+    border-bottom: 2px solid #48fab9;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+
+  .item {
+    margin-bottom: 15px;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .item-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #0a2342;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .header-top {
+  position: relative;
+  min-height: 130px;
+}
+
+    .header {
+    position: relative;
+    width: 100%;
+    padding: 40px 20px 20px;
+    background-color: #48fab9;
+    color: #11193b;
+    text-align: center;
+    }
+
+    .profile-photo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #ffffff;
+    }
+
+    .profile-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .name-title-centered {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .name-title-centered h1 {
+    font-size: 26px;
+    margin: 0;
+    }
+
+    .name-title-centered .title {
+    font-size: 14px;
+    color: #11193b;
+    margin-top: 5px;
+    }
+
+
+
+  .item-subtitle {
+    font-size: 13px;
+    color: #3498db;
+    margin-top: 2px;
+  }
+
+  .item-date {
+    font-size: 12px;
+    color: #7f8c8d;
+    white-space: nowrap;
+  }
+
+  .item-description {
+    font-size: 12px;
+    margin-top: 6px;
+    text-align: justify;
+  }
+
+  .item-description ul {
+    padding-left: 18px;
+    text-align: justify;
+
+  }
+
+  .item-description li {
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+
+  .skills-container {
+    margin-top: 5px;
+  }
+
+  .skill-item {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: justify;
+  }
+
+  .language-item, .hobby-item {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 2px 6px;
+    text-align: justify;
+    border-radius: 3px;
+    font-size: 11px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  .project-links a {
+    color: #3498db;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .publication-authors {
+    font-style: italic;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .publication-journal {
+    font-weight: bold;
+    font-size: 12px;
+    color: #0a2342;
+  }
+
+  .cert-id {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .referee-name {
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .referee-details {
+    font-size: 12px;
+  }
+
+  .referee {
+    margin-bottom: 15px;
+  }
+</style>
+
+</head>
+<body>
+  <div class="resume-container">
+    <div class="header">
+    {% if photo %}
+    <div class="profile-photo-container">
+        <img src="data:image/jpeg;base64,{{ photo }}" alt="Profile Photo">
+    </div>
+    {% endif %}
+
+    <div class="name-title-centered">
+        <h1>{{ personal_info.name }}</h1>
+        {% if personal_info.title %}
+        <p class="title">{{ personal_info.title }}</p>
+        {% endif %}
+    </div>
+
+    <div class="contact-info">
+        {% if personal_info.email %}{{ personal_info.email }}{% endif %}
+        {% if personal_info.phone %} | {{ personal_info.phone }}{% endif %}
+        {% if personal_info.location %}<br>{{ personal_info.location }}{% endif %}
+    </div>
+
+    <div class="contact-links">
+        {% if personal_info.linkedin %}
+        <a href="{{ personal_info.linkedin }}">LinkedIn</a>
+        {% endif %}
+        {% if personal_info.github %}
+        <a href="{{ personal_info.github }}">GitHub</a>
+        {% endif %}
+        {% if personal_info.website %}
+        <a href="{{ personal_info.website }}">Website</a>
+        {% endif %}
+        {% if custom_links %}
+        {% for link in custom_links %}
+            <a href="{{ link.url }}">{{ link.name }}</a>
+        {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+
+
+    
+    <div class="two-column">
+      <div class="main-content">
+        {% if professional_summary %}
+        <div class="section">
+          <h2>Professional Summary</h2>
+          <div class="item-description">
+            <p>{{ professional_summary }}</p>
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if work_experience %}
+        <div class="section">
+          <h2>Work Experience</h2>
+          {% for exp in work_experience %}
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">{{ exp.position }}</span>
+              <span class="item-date">
+                {{ exp.start_date }}{% if exp.end_date %} - {{ exp.end_date }}{% endif %}
+              </span>
+            </div>
+            <div class="item-subtitle">{{ exp.company }}</div>
+            {% if exp.description %}
+            <div class="item-description">
+              <ul>
+                {% if exp.description is string %}
+                  {% for sentence in exp.description.split('.') %}
+                    {% if sentence.strip() %}
+                    <li>{{ sentence.strip() }}.</li>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  {% for desc in exp.description %}
+                  <li>{{ desc }}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if education %}
+        <div class="section">
+          <h2>Education</h2>
+          {% for edu in education %}
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">{{ edu.degree }}</span>
+              <span class="item-date">
+                {% if edu.start_date %}{{ edu.start_date }}{% endif %}
+                {% if edu.end_date %}{% if edu.start_date %} - {% endif %}{{ edu.end_date }}{% endif %}
+              </span>
+            </div>
+            <div class="item-subtitle">{{ edu.institution }}</div>
+            {% if edu.gpa %}
+            <div class="item-description">
+              GPA: {{ edu.gpa }}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+              
+      <!-- <div class="main-content"> -->
+        {% if skills %}
+        <div class="section">
+          <h2>Skills</h2>
+          <div class="skills-container">
+            {% for skill in skills %}
+            <span class="skill-item">{{ skill }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        {% if academic_projects %}
+        <div class="section">
+          <h2>Projects</h2>
+          {% for project in academic_projects %}
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">{{ project.title }}</span>
+              <span class="item-date">{{ project.date }}</span>
+            </div>
+            {% if project.technologies %}
+            <div class="item-subtitle">Technologies: {{ project.technologies }}</div>
+            {% endif %}
+            {% if project.description %}
+            <div class="item-description">
+              <ul>
+                {% if project.description is string %}
+                  {% for sentence in project.description.split('.') %}
+                    {% if sentence.strip() %}
+                    <li>{{ sentence.strip() }}.</li>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  {% for desc in project.description %}
+                  <li>{{ desc }}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+            {% endif %}
+            {% if project.links %}
+            <div class="project-links">
+              {% for link_name, link_url in project.links.items() %}
+              <a href="{{ link_url }}">{{ link_name }}</a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if publications %}
+        <div class="section">
+          <h2>Publications</h2>
+          {% for pub in publications %}
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">{{ pub.title }}</span>
+              <span class="item-date">{{ pub.date }}</span>
+            </div>
+            <div class="publication-authors">{{ pub.authors }}</div>
+            <div class="publication-journal">{{ pub.journal }}</div>
+            {% if pub.description %}
+            <div class="item-description">
+              <ul>
+                {% if pub.description is string %}
+                  {% for sentence in pub.description.split('.') %}
+                    {% if sentence.strip() %}
+                    <li>{{ sentence.strip() }}.</li>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  {% for desc in pub.description %}
+                  <li>{{ desc }}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+            {% endif %}
+            {% if pub.url %}
+            <div class="project-links">
+              <a href="{{ pub.url }}">Read Article</a>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if referees %}
+        <div class="section">
+          <h2>References</h2>
+          {% for referee in referees %}
+          <div class="referee">
+            <div class="referee-name">{{ referee.name }}</div>
+            <div class="referee-details">
+              {{ referee.position }}{% if referee.organization %}, {{ referee.organization }}{% endif %}
+              <br>
+              {% if referee.email %}Email: {{ referee.email }}{% endif %}
+              {% if referee.phone %}{% if referee.email %} | {% endif %}Phone: {{ referee.phone }}{% endif %}
+              {% if referee.relationship %}
+              <br>Relationship: {{ referee.relationship }}
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+         {% if hobbies %}
+        <div class="section">
+          <h2>Hobbies & Interests</h2>
+          {% for hobby in hobbies %}
+          <div class="hobby-item">
+            {{ hobby }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if languages %}
+        <div class="section">
+          <h2>Languages</h2>
+          {% for language in languages %}
+          <div class="language-item">
+            {{ language }}
+            {% if language.level %}
+            <span>({{ language.level }})</span>
+            {% endif %}
+          </div>
+          {% endfor %}
+        {% endif %}
+        {% if custom_text %}
+        {% for custom_section in custom_text %}
+        <div class="section">
+          <h2>{{ custom_section.title }}</h2>
+          {% if custom_section.description %}
+          <div class="item-description">
+            <p>{{ custom_section.description }}</p>
+          </div>
+          {% endif %}
+          {% if custom_section.link %}
+          <div class="project-links">
+            <a href="{{ custom_section.link.url }}">{{ custom_section.link.name }}</a>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+    <!-- </div> -->
+  </div>
+</body>
+</html>

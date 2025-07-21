@@ -3,10 +3,6 @@ import pdfkit
 import os
 import uuid
 import platform
-import pdfkit
-
-# Configuration for Docker environment
-
 
 def generate_resume(data):
     """
@@ -16,9 +12,9 @@ def generate_resume(data):
     
     # Configure wkhtmltopdf based on environment
     if platform.system() == "Windows":
-        # Local development on Windows
-        path_to_wkhtmltopdf = r"C:\Progr/am Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
-        config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+        # Local development on Windows - fix the path
+        path_to_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+        config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
     else:
         # Production environment (Linux/Render)
         # wkhtmltopdf will be installed via apt-get in render.yaml
@@ -26,7 +22,7 @@ def generate_resume(data):
 
     # Load template and render
     env = Environment(loader=FileSystemLoader('templates'))
-    template = env.get_template('resume_template.html')
+    template = env.get_template('resume_template10.html')
     rendered_html = template.render(data)
 
     # Generate unique filename
@@ -42,10 +38,10 @@ def generate_resume(data):
     # PDF generation options
     options = {
         'page-size': 'A4',
-        'margin-top': '0.75in',
-        'margin-right': '0.75in',
-        'margin-bottom': '0.75in',
-        'margin-left': '0.75in',
+        # 'margin-top': '0.50in',
+        # 'margin-right': '0.50in',
+        # 'margin-bottom': '0.50in',
+        # 'margin-left': '0.50in',
         'encoding': "UTF-8",
         'no-outline': None,
         'enable-local-file-access': None
@@ -58,3 +54,7 @@ def generate_resume(data):
         return output_file
     except Exception as e:
         raise Exception(f"PDF generation failed: {str(e)}")
+
+
+
+
