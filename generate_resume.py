@@ -22,7 +22,7 @@ def generate_resume(data):
 
     # Load template and render
     env = Environment(loader=FileSystemLoader('templates'))
-    template = env.get_template('resume_template12.html')
+    template = env.get_template('resume_template21.html')
     rendered_html = template.render(data)
 
     # Generate unique filename

@@ -10,10 +10,10 @@
         }
         
         body {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            line-height: 1.4;
-            color: #333333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #2c3e50;
             margin: 0;
             padding: 0;
             background-color: #ffffff;
@@ -26,10 +26,11 @@
 
         /* Header Section */
         .header {
-            background-color: #ff6a96;
-            padding: 30px 40px;
+            background: #667eea;
+            padding: 35px 40px;
             width: 100%;
             overflow: hidden;
+            color: white;
         }
 
         .profile-section {
@@ -39,83 +40,96 @@
 
         .profile-photo-container {
             float: left;
-            width: 120px;
-            height: 120px;
-            margin-right: 20px;
-            margin-bottom: 10px;
+            width: 150px;
+            margin-right: 25px;
         }
 
         .profile-photo-container img {
-            width: 120px;
-            height: 120px;
-            /* border-radius: 50%; */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             object-fit: cover;
-            display: block;
+            /* border: 3px solid rgba(255, 255, 255, 0.3); */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .profile-info {
             overflow: hidden;
-            min-height: 120px;
-            padding-top: 0;
+            padding-top: 20px;
+            min-height: 150px;
         }
 
         .name {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin: 0 0 5px 0;
+            font-size: 32px;
+            font-weight: 300;
+            color: #ffffff;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
         }
 
         .title {
-            font-size: 16px;
-            color: #000101;
-            margin: 0 0 15px 0;
-            font-weight: normal;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 18px 0;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .contact-info {
-            font-size: 13px;
-            color: #000101;
-            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
         }
 
         .contact-info div {
             display: inline-block;
-            margin-right: 15px;
-            margin-bottom: 3px;
+            margin-right: 20px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 15px;
         }
 
         .contact-links a {
-            color: #000000;
+            color: #ffffff;
             text-decoration: none;
-            margin-right: 15px;
-            font-size: 13px;
+            margin-right: 18px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 5px;
+            transition: background 0.3s ease;
         }
 
         /* Content Section - Float layout for pdfkit compatibility */
         .content-section {
             width: 100%;
             overflow: hidden;
+            background: #f8f9fa;
         }
 
         .sidebar {
             float: left;
             width: 35%;
-            background-color: #ffdae5;
-            padding: 30px 25px;
+            background: #34495e;
+            padding: 35px 30px;
+            color: #ecf0f1;
         }
 
         .main-content {
             float: right;
             width: 65%;
             background-color: #ffffff;
-            padding: 30px 40px;
+            padding: 35px 40px;
         }
 
-        /* Full width when no sidebar - Fixed */
+        /* Full width when no sidebar */
         .main-content-full {
             width: 100%;
-            padding: 30px 40px;
+            padding: 35px 40px;
             background-color: #ffffff;
             display: block;
         }
@@ -127,9 +141,9 @@
             clear: both;
         }
 
-        /* Section Styling - Remove page-break-inside for pdfkit */
+        /* Section Styling */
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .section:last-child {
@@ -138,24 +152,43 @@
 
         .section-title {
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
             color: #2c3e50;
-            /* margin-bottom: 15px; */
-            border-top: 2px solid#ff6a96;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #ff6a96;
-            padding-bottom: 5px;
+            letter-spacing: 1.5px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #667eea;
+            border-radius: 2px;
         }
 
         /* Sidebar specific styling */
         .sidebar .section-title {
-            border-bottom-color: #ff6a96;
+            color: #ecf0f1;
+        }
+
+        .sidebar .section-title::after {
+            background:  #2ecc71;
         }
 
         /* Experience/Education Items */
         .item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #667eea;
         }
 
         .item:last-child {
@@ -163,153 +196,267 @@
         }
 
         .item-header {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .item-title {
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             color: #2c3e50;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
 
         .item-subtitle {
             font-size: 14px;
-            color: #3498db;
-            font-weight: normal;
-            margin-bottom: 3px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
         }
 
         .item-date {
-            font-size: 13px;
-            color: #7f8c8d;
-            margin-bottom: 5px;
+            font-size: 12px;
+            color: #95a5a6;
+            margin-bottom: 8px;
+            background: #ecf0f1;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-block;
         }
 
         .item-description {
             font-size: 13px;
             color: #555555;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .item-description ul {
-            margin: 5px 0 0 0;
-            padding-left: 16px;
+            margin: 8px 0 0 0;
+            padding-left: 18px;
         }
 
         .item-description li {
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
 
         /* Skills Section */
         .skills-container {
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
         .skill-item {
             display: inline-block;
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            padding: 5px 12px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border-radius: 15px;
+            background: #667eea;
+            color: #ffffff;
+            padding: 8px 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border-radius: 20px;
             font-size: 12px;
-            font-weight: normal;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Languages with levels */
         .language-item {
-            margin-bottom: 8px;
-            font-size: 13px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 6px;
         }
 
         .language-name {
-            font-weight: bold;
-            color: #2c3e50;
+            font-weight: 600;
+            color: #ecf0f1;
         }
 
         .language-level {
-            color: #7f8c8d;
+            color: #bdc3c7;
             font-size: 12px;
+            float: right;
         }
 
         /* Contact section in sidebar */
         .contact-section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .contact-section .section-title {
-            border-bottom-color: #ff6a96;
-            margin-bottom: 12px;
+            color: #ecf0f1;
+            margin-bottom: 15px;
         }
 
         .contact-item {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-size: 13px;
-            color: #555555;
+            color: #bdc3c7;
+            line-height: 1.4;
         }
 
         .contact-item strong {
-            color: #2c3e50;
+            color: #ecf0f1;
             display: inline-block;
-            min-width: 60px;
+            min-width: 70px;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
         }
 
         /* Professional Summary */
         .summary-text {
             font-size: 14px;
             color: #555555;
-            line-height: 1.6;
+            line-height: 1.7;
             text-align: justify;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
         }
 
         /* Publications specific */
         .publication-authors,
         .publication-journal {
             font-size: 13px;
-            color: #666666;
-            margin-bottom: 3px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-style: italic;
         }
 
         /* References */
         .referee {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
         }
 
         .referee-name {
-            font-weight: bold;
+            font-weight: 600;
             color: #2c3e50;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .referee-details {
             font-size: 12px;
-            color: #666666;
-            margin-top: 3px;
-            line-height: 1.4;
+            color: #7f8c8d;
+            margin-top: 5px;
+            line-height: 1.5;
         }
 
         /* Project links */
         .project-links {
-            margin-top: 8px;
+            margin-top: 12px;
         }
 
         .project-links a {
-            color: #3498db;
+            color: #667eea;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 18px;
             font-size: 12px;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 5px;
         }
 
         /* Education specific */
         .gpa-info {
             font-size: 12px;
-            color: #666666;
-            margin-top: 3px;
+            color: #7f8c8d;
+            margin-top: 5px;
+            background: #e8f4fd;
+            padding: 4px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* Certification specific */
+        .certification-item {
+            margin-bottom: 25px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #2ecc71;
+        }
+
+        .certification-header {
+            margin-bottom: 10px;
+        }
+
+        .certification-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .certification-date {
+            font-size: 12px;
+            color: #95a5a6;
+            background: #ecf0f1;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .certification-issuer {
+            font-size: 14px;
+            color: #2ecc71;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .certification-description {
+            font-size: 13px;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        .certification-credential {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Sidebar items styling */
+        .sidebar .item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #3498db;
+            color: #ecf0f1;
+        }
+
+        .sidebar .item-title {
+            color: #ecf0f1;
+        }
+
+        .sidebar .item-subtitle {
+            color: #3498db;
+        }
+
+        .sidebar .item-date {
+            background: rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+        }
+
+        .sidebar .item-description {
+            color: #bdc3c7;
+        }
+
+        .sidebar .gpa-info {
+            background: rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
         }
     </style>
 </head>
@@ -359,106 +506,106 @@
             </div>
         </div>
 
-                <!-- Content Section -->
-                {% set has_sidebar_content = skills or education or languages or hobbies %}
-                
-                {% if has_sidebar_content %}
-                <div class="content-section clearfix">
-                    <!-- Sidebar -->
-                    <div class="sidebar">
-                        <!-- Contact Section -->
-                        <div class="contact-section">
-                            <h2 class="section-title">Contact</h2>
-                            {% if personal_info.email %}
-                            <div class="contact-item">
-                                <strong>Email:</strong> {{ personal_info.email }}
-                            </div>
-                            {% endif %}
-                            {% if personal_info.phone %}
-                            <div class="contact-item">
-                                <strong>Phone:</strong> {{ personal_info.phone }}
-                            </div>
-                            {% endif %}
-                            {% if personal_info.location %}
-                            <div class="contact-item">
-                                <strong>Address:</strong> {{ personal_info.location }}
-                            </div>
-                            <!-- {% endif %}
-                            {% if personal_info.linkedin %}
-                            <div class="contact-item">
-                                <strong>LinkedIn:</strong> <a href="{{ personal_info.linkedin }}">LinkedIn Profile</a>
-                            </div>
-                            {% endif %} -->
-                        </div>
+        <!-- Content Section -->
+        {% set has_sidebar_content = skills or education or languages or hobbies %}
+        
+        {% if has_sidebar_content %}
+        <div class="content-section">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <h2 class="section-title">Contact</h2>
+                    {% if personal_info.email %}
+                    <div class="contact-item">
+                        <strong>Email:</strong> {{ personal_info.email }}
+                    </div>
+                    {% endif %}
+                    {% if personal_info.phone %}
+                    <div class="contact-item">
+                        <strong>Phone:</strong> {{ personal_info.phone }}
+                    </div>
+                    {% endif %}
+                    {% if personal_info.location %}
+                    <div class="contact-item">
+                        <strong>Address:</strong> {{ personal_info.location }}
+                    </div>
+                    <!-- {% endif %}
+                    {% if personal_info.linkedin %}
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong> <a href="{{ personal_info.linkedin }}">LinkedIn Profile</a>
+                    </div>
+                    {% endif %} -->
+                </div>
 
-                        <!-- Skills Section -->
-                        {% if skills %}
-                        <div class="section">
-                            <h2 class="section-title">Skills</h2>
-                            <div class="skills-container">
-                                {% for skill in skills %}
-                                <span class="skill-item">{{ skill }}</span>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        {% endif %}
+                <!-- Skills Section -->
+                {% if skills %}
+                <div class="section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-container">
+                        {% for skill in skills %}
+                        <span class="skill-item">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
 
-                        <!-- Education Section -->
-                        {% if education %}
-                        <div class="section">
-                            <h2 class="section-title">Education</h2>
-                            {% for edu in education %}
-                            <div class="item">
-                                <div class="item-header">
-                                    <div class="item-title">{{ edu.degree }}</div>
-                                    <div class="item-subtitle">{{ edu.institution }}</div>
-                                    <div class="item-date">
-                                        {% if edu.start_date %}{{ edu.start_date }}{% endif %}
-                                        {% if edu.end_date %}{% if edu.start_date %} - {% endif %}{{ edu.end_date }}{% endif %}
-                                    </div>
-                                </div>
-                                {% if edu.gpa %}
-                                <div class="gpa-info">GPA: {{ edu.gpa }}</div>
-                                {% endif %}
-                            </div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-
-                        <!-- Languages Section -->
-                        {% if languages %}
-                        <div class="section">
-                            <h2 class="section-title">Languages</h2>
-                            {% for language in languages %}
-                            <div class="language-item">
-                                <span class="language-name">{{ language }}</span>
-                                {% if language.level %}
-                                <span class="language-level">({{ language.level }})</span>
-                                {% endif %}
-                            </div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-
-                        <!-- Hobbies Section -->
-                        {% if hobbies %}
-                        <div class="section">
-                            <h2 class="section-title">Hobbies</h2>
-                            <div class="skills-container">
-                                {% for hobby in hobbies %}
-                                <span class="skill-item">{{ hobby }}</span>
-                                {% endfor %}
+                <!-- Education Section -->
+                {% if education %}
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    {% for edu in education %}
+                    <div class="item">
+                        <div class="item-header">
+                            <div class="item-title">{{ edu.degree }}</div>
+                            <div class="item-subtitle">{{ edu.institution }}</div>
+                            <div class="item-date">
+                                {% if edu.start_date %}{{ edu.start_date }}{% endif %}
+                                {% if edu.end_date %}{% if edu.start_date %} - {% endif %}{{ edu.end_date }}{% endif %}
                             </div>
                         </div>
+                        {% if edu.gpa %}
+                        <div class="gpa-info">GPA: {{ edu.gpa }}</div>
                         {% endif %}
                     </div>
-
-                    <!-- Main Content with sidebar -->
-                    <div class="main-content">
-                {% else %}
-                <!-- Main Content full width when no sidebar -->
-                <div class="main-content-full">
+                    {% endfor %}
+                </div>
                 {% endif %}
+
+                <!-- Languages Section -->
+                {% if languages %}
+                <div class="section">
+                    <h2 class="section-title">Languages</h2>
+                    {% for language in languages %}
+                    <div class="language-item clearfix">
+                        <span class="language-name">{{ language }}</span>
+                        {% if language.level %}
+                        <span class="language-level">{{ language.level }}</span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Hobbies Section -->
+                {% if hobbies %}
+                <div class="section">
+                    <h2 class="section-title">Hobbies</h2>
+                    <div class="skills-container">
+                        {% for hobby in hobbies %}
+                        <span class="skill-item">{{ hobby }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Main Content with sidebar -->
+            <div class="main-content">
+        {% else %}
+        <!-- Main Content full width when no sidebar -->
+        <div class="main-content-full">
+        {% endif %}
                 <!-- Professional Summary -->
                 {% if professional_summary %}
                 <div class="section">
@@ -466,6 +613,47 @@
                     <div class="summary-text">
                         {{ professional_summary }}
                     </div>
+                </div>
+                {% endif %}
+
+                <!-- Certifications -->
+                {% if certifications %}
+                <div class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    {% for cert in certifications %}
+                    <div class="certification-item">
+                        <div class="certification-header">
+                            <div class="certification-title">{{ cert.name }}</div>
+                            <div class="certification-date">{{ cert.date }}</div>
+                        </div>
+                        <div class="certification-issuer">{{ cert.issuer }}</div>
+                        {% if cert.description %}
+                        <div class="certification-description">
+                            <ul>
+                                {% if cert.description is string %}
+                                    {% for sentence in cert.description.split('.') %}
+                                        {% if sentence.strip() %}
+                                        <li>{{ sentence.strip() }}.</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    {% for desc in cert.description %}
+                                    <li>{{ desc }}</li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% if cert.credential_id %}
+                        <div class="certification-credential">Credential ID: {{ cert.credential_id }}</div>
+                        {% endif %}
+                        {% if cert.url %}
+                        <div class="project-links">
+                            <a href="{{ cert.url }}">View Certificate</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
                 </div>
                 {% endif %}
 
@@ -499,45 +687,7 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% if certifications %}
-                <div class="section">
-                <h2 class="section-title">Certifications</h2>
-                {% for cert in certifications %}
-                <div class="item">
-                    <div class="item-header">
-                    <span class="item-title">{{ cert.name }}</span>
-                    <span class="item-date">{{ cert.date }}</span>
-                    </div>
-                    <div class="item-subtitle">{{ cert.issuer }}</div>
-                    {% if cert.description %}
-                    <div class="item-description">
-                    <ul>
-                        {% if cert.description is string %}
-                        {% for sentence in cert.description.split('.') %}
-                            {% if sentence.strip() %}
-                            <li>{{ sentence.strip() }}.</li>
-                            {% endif %}
-                        {% endfor %}
-                        {% else %}
-                        {% for desc in cert.description %}
-                        <li>{{ desc }}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </ul>
-                    </div>
-                    {% endif %}
-                    {% if cert.credential_id %}
-                    <div class="cert-id">Credential ID: {{ cert.credential_id }}</div>
-                    {% endif %}
-                    {% if cert.url %}
-                    <div class="project-links">
-                    <a href="{{ cert.url }}">View Certificate</a>
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %}
-                </div>
-                {% endif %}
+
                 <!-- Projects -->
                 {% if academic_projects %}
                 <div class="section">

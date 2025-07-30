@@ -78,7 +78,7 @@
         .title {
             font-size: 16px;
             margin: 5px 0 0 0;
-            opacity: 0.9;
+            /* opacity: 0.9; */
             font-weight: normal;
         }
 
@@ -401,13 +401,13 @@
                         <div>email: {{ personal_info.email }}</div>
                         {% endif %}
                         {% if personal_info.website %}
-                        <div>{{ personal_info.website }}</div>
+                        <div> Website: {{ personal_info.website }}</div>
                         {% endif %}
                         {% if personal_info.linkedin %}
-                        <div>{{ personal_info.linkedin }}</div>
+                        <div>LinkedIn: {{ personal_info.linkedin }}</div>
                         {% endif %}
                         {% if personal_info.github %}
-                        <div>{{ personal_info.github }}</div>
+                        <div>GitHub: {{ personal_info.github }}</div>
                         {% endif %}
                         {% if custom_links %}
                             {% for link in custom_links %}
@@ -456,7 +456,45 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-
+                {% if certifications %}
+                <div class="section">
+                <h2 class="section-title">Certifications</h2>
+                {% for cert in certifications %}
+                <div class="item">
+                    <div class="item-header">
+                    <span class="item-title">{{ cert.name }}</span>
+                    <span class="item-date">{{ cert.date }}</span>
+                    </div>
+                    <div class="item-subtitle">{{ cert.issuer }}</div>
+                    {% if cert.description %}
+                    <div class="item-description">
+                    <ul>
+                        {% if cert.description is string %}
+                        {% for sentence in cert.description.split('.') %}
+                            {% if sentence.strip() %}
+                            <li>{{ sentence.strip() }}.</li>
+                            {% endif %}
+                        {% endfor %}
+                        {% else %}
+                        {% for desc in cert.description %}
+                        <li>{{ desc }}</li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    </div>
+                    {% endif %}
+                    {% if cert.credential_id %}
+                    <div class="cert-id">Credential ID: {{ cert.credential_id }}</div>
+                    {% endif %}
+                    {% if cert.url %}
+                    <div class="project-links">
+                    <a href="{{ cert.url }}">View Certificate</a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                </div>
+                {% endif %}
                 <!-- Projects Section -->
                 {% if academic_projects %}
                 <div class="section">
@@ -610,19 +648,6 @@
                     </div>
                 </div>
                 {% endif %}
-
-                <!-- Skills Section -->
-                {% if skills %}
-                <div class="section skills-section">
-                    <h2 class="section-title">Skills</h2>
-                    <ul class="skills-list">
-                        {% for skill in skills %}
-                        <li>{{ skill }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-
                 <!-- Education Section -->
                 {% if education %}
                 <div class="section">
@@ -642,6 +667,19 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+
+                <!-- Skills Section -->
+                {% if skills %}
+                <div class="section skills-section">
+                    <h2 class="section-title">Skills</h2>
+                    <ul class="skills-list">
+                        {% for skill in skills %}
+                        <li>{{ skill }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
             </div>
         </div>
 

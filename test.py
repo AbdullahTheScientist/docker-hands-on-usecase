@@ -400,6 +400,61 @@ data = {
             "links": {
                 "Portfolio": "https://avamartinezdesign.com/farmers-market"
             }
+        },
+        {
+            "title": "Branding for Local Farmers Market",
+            "date": "Fall 2013",
+            "technologies": "Illustrator, InDesign, Photoshop",
+            "description": """
+                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
+            """,
+            "links": {
+                "Portfolio": "https://avamartinezdesign.com/farmers-market"
+            }
+        },
+        {
+            "title": "Branding for Local Farmers Market",
+            "date": "Fall 2013",
+            "technologies": "Illustrator, InDesign, Photoshop",
+            "description": """
+                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
+            """,
+            "links": {
+                "Portfolio": "https://avamartinezdesign.com/farmers-market"
+            }
+        },
+        {
+            "title": "Branding for Local Farmers Market",
+            "date": "Fall 2013",
+            "technologies": "Illustrator, InDesign, Photoshop",
+            "description": """
+                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
+            """,
+            "links": {
+                "Portfolio": "https://avamartinezdesign.com/farmers-market"
+            }
+        },
+        {
+            "title": "Branding for Local Farmers Market",
+            "date": "Fall 2013",
+            "technologies": "Illustrator, InDesign, Photoshop",
+            "description": """
+                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
+            """,
+            "links": {
+                "Portfolio": "https://avamartinezdesign.com/farmers-market"
+            }
+        },
+        {
+            "title": "Branding for Local Farmers Market",
+            "date": "Fall 2013",
+            "technologies": "Illustrator, InDesign, Photoshop",
+            "description": """
+                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
+            """,
+            "links": {
+                "Portfolio": "https://avamartinezdesign.com/farmers-market"
+            }
         }
     ],
     "certifications": [
@@ -450,26 +505,29 @@ data = {
                 "Digital illustration",
         "Photography",
         "Poster collecting",
-        "Travel sketching",
-        "Calligraphy",
-                "Digital illustration",
-        "Photography",
-        "Poster collecting",
-        "Travel sketching",
-        "Calligraphy",
-                "Digital illustration",
-        "Photography",
-        "Poster collecting",
-        "Travel sketching",
+        # "Travel sketching",
+        # "Calligraphy",
+        #         "Digital illustration",
+        # "Photography",
+        # "Poster collecting",
+        # "Travel sketching",
+        # "Calligraphy",
+        #         "Digital illustration",
+        # "Photography",
+        # "Poster collecting",
+        # "Travel sketching",
         "Calligraphy"
     ],
     "languages": [
         "English",
         "French",
-        "jdskjd",
-        "jdskjd",
-        "jdskjd",
-        "jdskjd"
+        # "jdskjd",
+        # "jdskjd",
+        # "jdskjd",
+        # "English",
+        # "French",
+        # "jdskjd",
+        # "jdskjd"
     ],
     "referees": [
         {
@@ -493,8 +551,8 @@ data = {
 }
 
 # Add profile picture if available
-# if profile_image_base64:
-#     data["photo"] = profile_image_base64
+if profile_image_base64:
+    data["photo"] = profile_image_base64
 
 
 def test_health_check():

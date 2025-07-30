@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <title>{{ personal_info.name }} - Resume</title>
   <style>
-    /* Basic Reset */
-    body, h1, h2, h3, p, ul, li {
-      margin: 0;
-      padding: 0;
+
+    /* Reset */
+    *, *::before, *::after {
+        box-sizing: border-box;
     }
-    
+
     body {
-      font-family: 'Arial', sans-serif;
-      font-size: 12px;
-      line-height: 1.4;
-      color: #333;
+      font-family: 'Calibri' sans-serif;
+      font-size: 15px;               /* Corrected: "15m px" ➤ "15px" */
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+      color: #2e2e2e;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
     }
+
     
     .resume-container {
       width: 100%;
@@ -34,18 +40,21 @@
     }
     
     .profile-photo-container {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 10px;
+      width: 250px;
+      height: 250px;
+      /* border-radius: 60px; */ /* Remove this */
       overflow: hidden;
-      border-radius: 50%;
-      border: 3px solid #2c3e50;
+      border: 3px solid #ffffff;
+      margin: 0 auto 20px;
+      display: block;
     }
-    
+
     .profile-photo-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      display: block;
     }
     
     .header h1 {
@@ -75,42 +84,65 @@
       margin: 0 5px;
     }
     
-    .two-column {
+    /* .two-column {
       width: 100%;
       overflow: hidden;
-    }
+    } */
     
-    .main-content {
+    /* .main-content {
       float: left;
       width: 65%;
       padding-right: 20px;
       box-sizing: border-box;
+    } */
+    .two-column {
+        display: flex;
+        position: relative;
+        min-height: calc(100vh - 160px);
     }
-    
+    .main-content {
+        width: 66.67%;
+        padding: 20px;
+        padding-left: 0%;
+        /* padding-right: 20px; */
+        /* min-height: calc(100vh - 160px); */
+        min-height: unset;
+    }
     .sidebar {
-      float: right;
-      width: 35%;
-      background-color: #f8f9fa;
-      padding: 15px;
-      box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 33.33%;
+        background-color: #f0f3f7;
+        padding: 20px;
+        min-height: 100%;
+        /* overflow-y: auto; */
     }
     
+    /* Ensure sidebar background extends to full height */
+    html {
+        height: 100%;
+        background-color: #f0f3f7;
+    }
     .section {
       margin-bottom: 15px;
-      page-break-inside: avoid;
+      /* page-break-inside: avoid; */
     }
     
     .section h2 {
       font-size: 16px;
       color: #2c3e50;
       border-bottom: 1px solid #3498db;
+      border-top: 1px solid #3498db;
       padding-bottom: 3px;
       margin-bottom: 10px;
     }
     
     .item {
       margin-bottom: 12px;
-      page-break-inside: avoid;
+      /* page-break-inside: avoid; */
     }
     
     .item-header {
@@ -121,8 +153,9 @@
       font-weight: bold;
       font-size: 13px;
       color: #2c3e50;
+      border-bottom: 1px solid rgba(255, 143, 32, 0.5); /* semi-transparent */
+
     }
-    
     .item-subtitle {
       font-size: 12px;
       color: #3498db;
@@ -136,12 +169,14 @@
     }
     
     .item-description {
-      font-size: 11px;
+      font-size: 15px;
       clear: both;
+      text-align: justify;
     }
     
     .item-description ul {
-      margin-left: 15px;
+      margin-left: 0%;
+  
     }
     
     .item-description li {
@@ -221,14 +256,14 @@
         margin: 0;
         padding: 0;
       }
-      
+/*       
       .section, .item {
         page-break-inside: avoid;
       }
       
       .header {
         page-break-after: avoid;
-      }
+      } */
     }
   </style>
 </head>
@@ -436,7 +471,16 @@
           {% endfor %}
         </div>
         {% endif %}
-        
+        {% if hobbies %}
+        <div class="section">
+          <h2>Hobbies & Interests</h2>
+          {% for hobby in hobbies %}
+          <div class="skill-item">
+            {{ hobby }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
         {% if custom_text %}
         {% for custom_section in custom_text %}
         <div class="section">
@@ -508,16 +552,7 @@
         </div>
         {% endif %}
         
-        {% if hobbies %}
-        <div class="section">
-          <h2>Hobbies & Interests</h2>
-          {% for hobby in hobbies %}
-          <div class="hobby-item">
-            {{ hobby }}
-          </div>
-          {% endfor %}
-        </div>
-        {% endif %}
+
                 
         {% if languages %}
         <div class="section">

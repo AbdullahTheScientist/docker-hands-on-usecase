@@ -95,7 +95,7 @@
 
   .sidebar {
     flex: 1;
-    background-color: #f0f3f7;
+    background-color: #ffffff;
     padding: 20px;
     order: 2;
     min-width: 250px;
@@ -111,6 +111,8 @@
     border-bottom: 2px solid #3b7dd8;
     padding-bottom: 4px;
     margin-bottom: 10px;
+    
+    border: 1px solid #0a2342;
   }
 
   .item {
@@ -127,26 +129,26 @@
 
   .item-title {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     color: #0a2342;
     flex: 1;
     min-width: 200px;
   }
 
   .item-subtitle {
-    font-size: 13px;
+    font-size: 14px;
     color: #3b7dd8;
     margin-top: 2px;
   }
 
   .item-date {
-    font-size: 12px;
+    font-size: 14px;
     color: #7f8c8d;
     white-space: nowrap;
   }
 
   .item-description {
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 6px;
   }
 
@@ -160,55 +162,88 @@
 
   .skills-container {
     margin-top: 5px;
+    line-height: 1.4;
+    text-align: left;
   }
 
   .skill-item {
     display: inline-block;
-    background-color: #3498db;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 11px;
-    margin-right: 5px;
+    font-size: 14px;
+    margin-right: 20px;
+    text-align: left;
     margin-bottom: 5px;
+    white-space: nowrap;
   }
 
-  .language-item, .hobby-item {
-    font-size: 12px;
-    margin-bottom: 6px;
+  .skill-item:last-child {
+    margin-right: 0;
+  }
+
+  .languages-container {
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  .language-item {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+  }
+
+  .language-item:last-child {
+    margin-right: 0;
+  }
+
+  .hobbies-container {
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  .hobby-item {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+  }
+
+  .hobby-item:last-child {
+    margin-right: 0;
   }
 
   .project-links a {
     color: #3b7dd8;
     text-decoration: underline;
-    font-size: 12px;
+    font-size: 14px;
     margin-right: 10px;
   }
 
   .publication-authors {
     font-style: italic;
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
   }
 
   .publication-journal {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     color: #0a2342;
   }
 
   .cert-id {
-    font-size: 12px;
+    font-size: 14px;
     color: #999;
   }
 
   .referee-name {
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .referee-details {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .referee {
@@ -227,7 +262,7 @@
     
     .sidebar {
       order: 2;
-      background-color: #f9f9f9;
+      background-color: #ffffff;
     }
     
     .item-header {
@@ -254,9 +289,7 @@
       margin: 0;
     }
 
-    .section, .item {
-      page-break-inside: avoid;
-    }
+
 
     .header {
       page-break-after: avoid;
@@ -387,7 +420,48 @@
           {% endfor %}
         </div>
         {% endif %}
-              
+        
+        {% if certifications %}
+        <div class="section">
+          <h2>Certifications</h2>
+          {% for cert in certifications %}
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">{{ cert.name }}</span>
+              <span class="item-date">{{ cert.date }}</span>
+            </div>
+            <div class="item-subtitle">{{ cert.issuer }}</div>
+            {% if cert.description %}
+            <div class="item-description">
+              <ul>
+                {% if cert.description is string %}
+                  {% for sentence in cert.description.split('.') %}
+                    {% if sentence.strip() %}
+                    <li>{{ sentence.strip() }}.</li>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  {% for desc in cert.description %}
+                  <li>{{ desc }}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+            {% endif %}
+            {% if cert.credential_id %}
+            <div class="cert-id">Credential ID: {{ cert.credential_id }}</div>
+            {% endif %}
+            {% if cert.url %}
+            <div class="project-links">
+              <a href="{{ cert.url }}">View Certificate</a>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      
       <div class="sidebar">
         {% if skills %}
         <div class="section">
@@ -399,6 +473,7 @@
           </div>
         </div>
         {% endif %}
+        
         {% if academic_projects %}
         <div class="section">
           <h2>Projects</h2>
@@ -497,27 +572,35 @@
           {% endfor %}
         </div>
         {% endif %}
-         {% if hobbies %}
+        
+      {% if hobbies %}
         <div class="section">
           <h2>Hobbies & Interests</h2>
-          {% for hobby in hobbies %}
-          <div class="hobby-item">
-            {{ hobby }}
+          <div class="hobbies-container">
+            {% for hobby in hobbies %}
+              <div class="hobby-item">
+                {{ hobby }}
+              </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
-        {% endif %}
+      {% endif %}
+
         {% if languages %}
         <div class="section">
           <h2>Languages</h2>
-          {% for language in languages %}
-          <div class="language-item">
-            {{ language }}
-            {% if language.level %}
-            <span>({{ language.level }})</span>
-            {% endif %}
+          <div class="languages-container">
+            {% for language in languages %}
+            <div class="language-item">
+              {{ language }}
+              {% if language.level %}
+              <span>({{ language.level }})</span>
+              {% endif %}
+            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
+        </div>
+        {% endif %}
         
         {% if custom_text %}
         {% for custom_section in custom_text %}
@@ -537,7 +620,6 @@
         {% endfor %}
         {% endif %}
       </div>
-
     </div>
   </div>
 </body>
