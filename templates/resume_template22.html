@@ -14,8 +14,8 @@
       font-family: 'Georgia', serif;
       background-color: white;
       color: #333;
-      line-height: 1.6;
-      font-size: 14px;
+      line-height: 1.4;
+      font-size: 11px;
     }
     
     .resume-container {
@@ -26,112 +26,134 @@
     
     .sidebar {
       display: table-cell;
-      width: 33%;
+      width: 35%;
       padding: 30px 20px;
       vertical-align: top;
-      border-right: 3px solid #2c3e50;
+      background-color: #f8f9fa;
+      border-right: 1px solid #e0e0e0;
     }
     
     .main-content {
       display: table-cell;
-      width: 70%;
-      padding: 40px;
+      width: 65%;
+      padding: 30px 25px;
       vertical-align: top;
     }
     
-    /* Sidebar Styles */
-    .sidebar-header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      
-      border-bottom: 1px solid #e74c3c;;
+    /* Header Styles */
+    .main-header {
+      margin-bottom: 25px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 15px;
     }
     
-    .sidebar-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 15px;
-      display: block;
-      border: 4px solid #8b4513;
-    }
-    
-    .sidebar h1 {
-      font-size: 24px;
-      color: #2c3e50;
-      margin-bottom: 8px;
+    .main-header h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 5px;
       font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .main-header .title {
+      font-size: 14px;
+      color: #666;
+      font-weight: normal;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     
-    .sidebar .title {
-      font-size: 16px;
-      color: #2c3e50;
-      margin-bottom: 0;
-      font-weight: normal;
-      font-style: italic;
-    }
-    
+    /* Sidebar Styles */
     .sidebar-section {
       margin-bottom: 25px;
     }
     
     .sidebar-section h2 {
-      color: #2c3e50;
-      font-size: 14px;
+      color: #333;
+      font-size: 12px;
       margin-bottom: 12px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border-bottom: 1px solid #e74c3c;
-      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #333;
+      padding-bottom: 6px;
+    }
+    
+    .sidebar-section h2:before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background-color: #333;
+      border-radius: 50%;
+      margin-right: 10px;
+      flex-shrink: 0;
     }
     
     .sidebar-contact {
-      font-size: 13px;
-      color: #2c3e50;
-      line-height: 1.5;
-      margin-bottom: 15px;
+      font-size: 10px;
+      color: #333;
+      line-height: 1.6;
     }
     
     .sidebar-contact div {
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .sidebar-contact div:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background-color: #333;
+      margin-right: 8px;
+      flex-shrink: 0;
     }
     
     .sidebar-contact a {
-      color: #2c3e50;
+      color: #333;
       text-decoration: none;
       display: block;
       margin-bottom: 4px;
+      padding-left: 16px;
+      position: relative;
     }
     
-    .sidebar-contact a:hover {
-      text-decoration: underline;
+    .sidebar-contact a:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background-color: #333;
+      position: absolute;
+      left: 0;
+      top: 6px;
     }
     
     .sidebar-skills span, .sidebar-languages span, .sidebar-hobbies span {
       display: block;
-      font-size: 13px;
-      color: #2c3e50;
-      margin-bottom: 6px;
-      padding-left: 10px;
+      font-size: 10px;
+      color: #333;
+      margin-bottom: 4px;
+      padding-left: 16px;
       position: relative;
     }
     
     .sidebar-skills span:before, .sidebar-languages span:before, .sidebar-hobbies span:before {
-      content: "▸";
-      color: #2c3e50;
+      content: "•";
+      color: #333;
       position: absolute;
       left: 0;
+      font-weight: bold;
     }
     
     .sidebar-publication {
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #4a4a4a;
+      margin-bottom: 15px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ddd;
+      font-size: 10px;
     }
     
     .sidebar-publication:last-child {
@@ -140,76 +162,52 @@
     
     .sidebar-publication-title {
       font-weight: bold;
-      color: #2c3e50;
-      font-size: 12px;
-      margin-bottom: 4px;
+      color: #333;
+      margin-bottom: 3px;
       line-height: 1.3;
     }
     
     .sidebar-publication-journal {
-      font-size: 11px;
-      color: #e74c3c;
-      margin-bottom: 3px;
+      color: #666;
+      margin-bottom: 2px;
       font-style: italic;
     }
     
     .sidebar-publication-date {
-      font-size: 11px;
-      color: #2c3e50;
+      color: #666;
     }
     
     /* Main Content Styles */
-    .main-header {
-      margin-bottom: 35px;
-      border-bottom: 3px solid #e74c3c;
-      padding-bottom: 20px;
-    }
-    
-    .main-header h1 {
-      font-size: 36px;
-      color: #2c3e50;
-      margin-bottom: 8px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    
-    .main-header .title {
-      font-size: 18px;
-      color: #e74c3c;
-      margin-bottom: 0;
-      font-weight: normal;
-      font-style: italic;
-    }
-    
     .section {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     
     .section h2 {
-      color: #2c3e50;
-      font-size: 18px;
-      margin-bottom: 20px;
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 15px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
-      position: relative;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #333;
+      padding-bottom: 8px;
     }
     
-    .section h2:after {
+    .section h2:before {
       content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background-color: #e74c3c;
+      width: 20px;
+      height: 20px;
+      background-color: #333;
+      border-radius: 50%;
+      margin-right: 10px;
+      flex-shrink: 0;
     }
     
     .item {
-      margin-bottom: 25px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #ecf0f1;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
     }
     
     .item:last-child {
@@ -217,131 +215,162 @@
     }
     
     .item-header {
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       display: table;
       width: 100%;
     }
     
     .item-title {
       font-weight: bold;
-      color: #2c3e50;
-      font-size: 16px;
+      color: #333;
+      font-size: 13px;
       display: table-cell;
       width: 70%;
       vertical-align: top;
     }
     
     .item-date {
-      font-size: 14px;
-      color: #e74c3c;
+      font-size: 11px;
+      color: #666;
       display: table-cell;
       width: 30%;
       text-align: right;
       vertical-align: top;
-      font-weight: bold;
+      font-weight: normal;
+      text-transform: uppercase;
     }
     
     .item-subtitle {
-      font-size: 15px;
-      color: #7f8c8d;
-      margin-bottom: 12px;
-      clear: both;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
       font-weight: normal;
-      font-style: italic;
     }
     
     .item-description ul {
-      margin: 10px 0;
-      padding-left: 20px;
+      margin: 8px 0;
+      padding-left: 0;
       list-style-type: none;
     }
     
     .item-description li {
-      margin-bottom: 6px;
-      font-size: 14px;
+      margin-bottom: 4px;
+      font-size: 11px;
       line-height: 1.4;
       color: #333;
       position: relative;
-      padding-left: 15px;
+      padding-left: 12px;
     }
     
     .item-description li:before {
-      content: "▸";
-      color: #e74c3c;
+      content: "•";
+      color: #333;
       position: absolute;
       left: 0;
+      font-weight: bold;
     }
     
     .summary p {
       margin-top: 0;
-      text-align: justify;
-      font-size: 15px;
+      font-size: 12px;
       line-height: 1.5;
       color: #333;
-      font-style: italic;
+      text-align: justify;
     }
     
     .referee {
-      padding: 20px;
-      margin-bottom: 15px;
-      border-left: 4px solid #e74c3c;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-left: 3px solid #333;
       background-color: #f8f9fa;
     }
     
     .referee-name {
       font-weight: bold;
-      color: #2c3e50;
-      font-size: 16px;
-      margin-bottom: 5px;
+      color: #333;
+      font-size: 12px;
+      margin-bottom: 4px;
     }
     
     .referee-details {
-      font-size: 14px;
+      font-size: 10px;
       color: #666;
-      margin-top: 4px;
+      margin-top: 3px;
       line-height: 1.4;
     }
     
     .cert-id {
-      font-size: 13px;
+      font-size: 10px;
       color: #888;
-      margin-top: 6px;
+      margin-top: 5px;
       font-style: italic;
     }
     
     .project-links {
-      margin-top: 10px;
+      margin-top: 8px;
     }
     
     .project-links a {
-      color: #e74c3c;
+      color: #333;
       text-decoration: none;
-      margin-right: 20px;
-      font-size: 14px;
-      display: inline-block;
+      margin-right: 15px;
+      font-size: 11px;
+      display: block;
       font-weight: bold;
+      border-bottom: 1px solid #333;
+      margin-bottom: 5px;
     }
     
-    .project-links a:hover {
-      text-decoration: underline;
+    /* Photo styling */
+    .sidebar-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      display: block;
+      border: 3px solid #333;
+    }
+    
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .sidebar h1 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .sidebar .title {
+      font-size: 12px;
+      color: #666;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Education specific styling */
+    .education .item-subtitle {
+      color: #666;
+    }
+    
+    /* Custom sections styling */
+    .custom-section p {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #333;
     }
     
     /* Alternative layout for when no photo is present */
     .no-photo .sidebar-header {
       text-align: left;
-    }
-    
-    /* Education specific styling */
-    .education .item-subtitle {
-      color: #7f8c8d;
-      font-style: italic;
-    }
-    
-    /* Custom sections styling */
-    .custom-section p {
-      font-size: 15px;
-      line-height: 1.5;
-      color: #333;
     }
   </style>
 </head>
@@ -349,15 +378,15 @@
   <div class="resume-container">
     <!-- Sidebar -->
     <div class="sidebar">
+      {% if photo %}
       <div class="sidebar-header">
-        {% if photo %}
         <img src="data:image/jpeg;base64,{{ photo }}" alt="Profile Photo" class="sidebar-photo">
-        {% endif %}
         <h1>{{ personal_info.name }}</h1>
         {% if personal_info.title %}
         <div class="title">{{ personal_info.title }}</div>
         {% endif %}
       </div>
+      {% endif %}
       
       <!-- Contact Information in Sidebar -->
       <div class="sidebar-section">
@@ -392,7 +421,7 @@
       <!-- Skills in Sidebar -->
       {% if skills %}
       <div class="sidebar-section">
-        <h2>Core Skills</h2>
+        <h2>Skills</h2>
         <div class="sidebar-skills">
           {% for skill in skills %}
           <span>{{ skill }}</span>
@@ -435,9 +464,31 @@
           <div class="sidebar-publication-journal">{{ pub.journal }}</div>
           <div class="sidebar-publication-date">{{ pub.date }}</div>
           {% if pub.url %}
-          <div style="margin-top: 8px;">
-            <a href="{{ pub.url }}" style="font-size: 11px; color: #e74c3c;">View Article</a>
+          <div style="margin-top: 6px;">
+            <a href="{{ pub.url }}" style="font-size: 10px; color: #333; border-bottom: 1px solid #333;">View Article</a>
           </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- References in Sidebar -->
+      {% if referees %}
+      <div class="sidebar-section">
+        <h2>Reference</h2>
+        {% for referee in referees %}
+        <div style="margin-bottom: 15px; font-size: 10px;">
+          <div style="font-weight: bold; margin-bottom: 3px;">{{ referee.name }}</div>
+          <div style="color: #666; margin-bottom: 2px;">{{ referee.position }}</div>
+          {% if referee.organization %}
+          <div style="color: #666; margin-bottom: 2px;">{{ referee.organization }}</div>
+          {% endif %}
+          {% if referee.phone %}
+          <div style="color: #666;">Phone: {{ referee.phone }}</div>
+          {% endif %}
+          {% if referee.email %}
+          <div style="color: #666;">Email: {{ referee.email }}</div>
           {% endif %}
         </div>
         {% endfor %}
@@ -457,14 +508,14 @@
       
       {% if professional_summary %}
       <div class="section summary">
-        <h2>Professional Summary</h2>
+        <h2>Profile</h2>
         <p>{{ professional_summary }}</p>
       </div>
       {% endif %}
       
       {% if work_experience %}
       <div class="section">
-        <h2>Professional Experience</h2>
+        <h2>Work Experience</h2>
         {% for exp in work_experience %}
         <div class="item">
           <div class="item-header">
@@ -502,13 +553,13 @@
         {% for edu in education %}
         <div class="item">
           <div class="item-header">
-            <div class="item-title">{{ edu.institution }}</div>
+            <div class="item-title">{{ edu.degree }}</div>
             <div class="item-date">
               {% if edu.start_date %}{{ edu.start_date }}{% endif %}
               {% if edu.end_date %}{% if edu.start_date %} - {% endif %}{{ edu.end_date }}{% endif %}
             </div>
           </div>
-          <div class="item-subtitle">{{ edu.degree }}</div>
+          <div class="item-subtitle">{{ edu.institution }}</div>
         </div>
         {% endfor %}
       </div>
@@ -590,26 +641,6 @@
             <a href="{{ cert.url }}">View Certificate</a>
           </div>
           {% endif %}
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-      
-      {% if referees %}
-      <div class="section referees">
-        <h2>References</h2>
-        {% for referee in referees %}
-        <div class="referee">
-          <div class="referee-name">{{ referee.name }}</div>
-          <div class="referee-details">
-            {{ referee.position }}{% if referee.organization %}, {{ referee.organization }}{% endif %}
-            <br>
-            {% if referee.email %}Email: {{ referee.email }}{% endif %}
-            {% if referee.phone %}{% if referee.email %} | {% endif %}Phone: {{ referee.phone }}{% endif %}
-            {% if referee.relationship %}
-            <br>Relationship: {{ referee.relationship }}
-            {% endif %}
-          </div>
         </div>
         {% endfor %}
       </div>
