@@ -253,6 +253,8 @@ import os
 
 BASE_URL = 'http://localhost:8000'
 
+# BASE_URL = 'https://docker-hands-on-usecase.onrender.com'
+
 def load_profile_image(image_path="5-min.jpg"):
     """Load and encode profile image to base64"""
     try:
@@ -271,7 +273,7 @@ def load_profile_image(image_path="5-min.jpg"):
 profile_image_base64 = load_profile_image("5.jpg")
 
 data = {
-    "template_name": "modern1",
+    "template_name": "modern18",
     "personal_info": {
         "name": "Ava jdksjdks",
         "title": "Senior Grapgner",
