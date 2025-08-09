@@ -109,3 +109,8 @@ def generate_coverletter(data):
         return output_file
     except Exception as e:
         raise Exception(f"PDF generation failed: {str(e)}")
+
+
+
+
+

@@ -273,7 +273,7 @@ def load_profile_image(image_path="5-min.jpg"):
 profile_image_base64 = load_profile_image("5.jpg")
 
 data = {
-    "template_name": "modern18",
+    "template_name": "prof1",
     "personal_info": {
         "name": "Ava jdksjdks",
         "title": "Senior Grapgner",
