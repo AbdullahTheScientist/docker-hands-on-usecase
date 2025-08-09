@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            font-size: 11pt;
+            padding: 0.5in;
+            max-width: 8.5in;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .header {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+        }
+        
+        .applicant-name {
+            font-size: 28pt;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .job-title {
+            font-size: 12pt;
+            color: #6b7280;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 10pt;
+            color: #4b5563;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .date-section {
+            text-align: right;
+            margin: 2rem 0 1.5rem 0;
+            font-size: 10pt;
+            color: #6b7280;
+        }
+        
+        .recipient-section {
+            margin-bottom: 2rem;
+            padding: 1.25rem;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .recipient-name {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        
+        .company-name {
+            font-size: 11pt;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .company-address {
+            font-size: 10pt;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+        
+        .greeting {
+            font-size: 11pt;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        
+        .paragraph {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+            line-height: 1.7;
+            color: #374151;
+            font-size: 11pt;
+        }
+        
+        .paragraph:first-child {
+            position: relative;
+        }
+        
+        .paragraph:first-child::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #2563eb, #1d4ed8);
+            border-radius: 2px;
+        }
+        
+        .company-highlight {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .skill-highlight {
+            color: #111827;
+            font-weight: 600;
+            background-color: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10.5pt;
+        }
+        
+        .closing-section {
+            margin-top: 2.5rem;
+        }
+        
+        .closing {
+            font-size: 11pt;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .signature-space {
+            height: 2.5rem;
+            /* margin: 1rem 0; */
+        }
+        
+        .printed-name {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #111827;
+        }
+        
+        /* Special styling for key elements */
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        
+        .callout-text {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 0.75rem;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            margin: 1rem 0;
+            color: #92400e;
+        }
+        
+        /* PDF-friendly styles */
+        @media print {
+            body {
+                padding: 0.25in;
+                font-size: 10pt;
+            }
+            
+            .applicant-name {
+                font-size: 24pt;
+            }
+            
+            .contact-info {
+                font-size: 9pt;
+            }
+            
+            .paragraph {
+                font-size: 10pt;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="applicant-name">{{ cover_letter_info.name }}</div>
+        {% if cover_letter_info.title %}
+        <div class="job-title">{{ cover_letter_info.title }}</div>
+        {% endif %}
+        
+        <div class="contact-info">
+            {% if cover_letter_info.email %}
+            <div class="contact-item">
+                <span class="contact-label">Email:</span>
+                <span>{{ cover_letter_info.email }}</span>
+            </div>
+            {% endif %}
+            {% if cover_letter_info.phone %}
+            <div class="contact-item">
+                <span class="contact-label">Phone:</span>
+                <span>{{ cover_letter_info.phone }}</span>
+            </div>
+            {% endif %}
+            {% if cover_letter_info.location %}
+            <div class="contact-item">
+                <span class="contact-label">Location:</span>
+                <span>{{ cover_letter_info.location }}</span>
+            </div>
+            {% endif %}
+            {% if cover_letter_info.linkedin %}
+            <div class="contact-item">
+                <span class="contact-label">LinkedIn:</span>
+                <span>{{ cover_letter_info.linkedin }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Date -->
+    <div class="date-section">
+        {{ cover_letter_info.date }}
+    </div>
+    
+    <!-- Recipient Information -->
+    {% if cover_letter_info.hiring_manager_name or cover_letter_info.company_name %}
+    <div class="recipient-section">
+        {% if cover_letter_info.hiring_manager_name %}
+        <div class="recipient-name">{{ cover_letter_info.hiring_manager_name }}</div>
+        {% endif %}
+        {% if cover_letter_info.company_name %}
+        <div class="company-name">{{ cover_letter_info.company_name }}</div>
+        {% endif %}
+        {% if cover_letter_info.company_address %}
+        <div class="company-address">{{ cover_letter_info.company_address }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    <!-- Greeting -->
+    <div class="greeting">
+        {% if cover_letter_info.hiring_manager_name %}
+        Dear {{ cover_letter_info.hiring_manager_name }},
+        {% else %}
+        Dear Hiring Manager,
+        {% endif %}
+    </div>
+    
+    <!-- Main Content -->
+    <div class="content-section">
+        {% if cover_letter_info.paragraphs %}
+            {% for paragraph in cover_letter_info.paragraphs %}
+            <div class="paragraph">{{ paragraph }}</div>
+            {% endfor %}
+        {% elif cover_letter_info.paragraph %}
+            {% if cover_letter_info.paragraph is iterable and cover_letter_info.paragraph is not string %}
+                {% for para in cover_letter_info.paragraph %}
+                <div class="paragraph">{{ para }}</div>
+                {% endfor %}
+            {% else %}
+                <div class="paragraph">{{ cover_letter_info.paragraph }}</div>
+            {% endif %}
+        {% else %}
+        <div class="paragraph">
+            I am writing to express my strong interest in joining <span class="company-highlight">{% if cover_letter_info.company_name %}{{ cover_letter_info.company_name }}{% else %}your organization{% endif %}</span>. Your reputation for innovation and commitment to excellence aligns perfectly with my professional values and career aspirations.
+        </div>
+        
+        <div class="paragraph">
+            Throughout my career, I have cultivated expertise in <span class="skill-highlight">strategic problem-solving</span>, <span class="skill-highlight">team leadership</span>, and <span class="skill-highlight">delivering exceptional results</span>. I thrive in dynamic environments where I can leverage my analytical skills and creative thinking to drive meaningful business outcomes.
+        </div>
+        
+        <div class="paragraph">
+            What particularly attracts me to {% if cover_letter_info.company_name %}<span class="company-highlight">{{ cover_letter_info.company_name }}</span>{% else %}your organization{% endif %} is your dedication to fostering innovation and supporting professional development. I am confident that my experience, combined with my passion for excellence, positions me as an ideal candidate for this opportunity.
+        </div>
+        
+        <div class="paragraph">
+            I would be delighted to discuss how my background and enthusiasm can contribute to your team's continued success. Thank you for considering my application, and I look forward to hearing from you soon.
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Closing -->
+    <div class="closing-section">
+        <div class="closing">
+            {% if cover_letter_info.closing %}{{ cover_letter_info.closing }},{% else %}Sincerely,{% endif %}
+        </div>
+        
+        <div class="signature-space"></div>
+        <div class="printed-name">{{ cover_letter_info.name }}</div>
+    </div>
+</body>
+</html>

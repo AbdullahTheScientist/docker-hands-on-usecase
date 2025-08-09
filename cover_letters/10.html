@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            font-size: 12pt;
+            padding: 60px;
+            max-width: 210mm;
+            margin: 0 auto;
+            min-height: 297mm;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: left;
+            margin-bottom: 50px;
+        }
+        
+        .applicant-name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 12pt;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            font-size: 11pt;
+            color: #333333;
+            line-height: 1.4;
+        }
+        
+        .contact-item {
+            margin-bottom: 5px;
+        }
+        
+        /* Date */
+        .date-section {
+            text-align: right;
+            margin: 40px 0;
+            font-size: 11pt;
+            color: #666666;
+        }
+        
+        /* Recipient Information */
+        .recipient-section {
+            margin-bottom: 30px;
+        }
+        
+        .recipient-name {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+        
+        .company-name {
+            font-size: 12pt;
+            color: #333333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .company-address {
+            font-size: 11pt;
+            color: #666666;
+            line-height: 1.4;
+        }
+        
+        /* Greeting */
+        .greeting {
+            font-size: 12pt;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+        
+        /* Content */
+        .content {
+            margin-bottom: 40px;
+        }
+        
+        .paragraph {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.7;
+            color: #333333;
+            font-size: 12pt;
+        }
+        
+        /* Simple highlights */
+        .company-highlight {
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        .skill-highlight {
+            font-weight: bold;
+            color: #333333;
+        }
+        
+        /* Closing */
+        .closing-section {
+            margin-top: 40px;
+        }
+        
+        .closing {
+            font-size: 12pt;
+            color: #333333;
+            margin-bottom: 60px;
+        }
+        
+        .printed-name {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        /* Print optimizations for pdfkit */
+        @media print {
+            body {
+                padding: 40px;
+                font-size: 11pt;
+            }
+            
+            .applicant-name {
+                font-size: 20pt;
+            }
+            
+            .paragraph {
+                font-size: 11pt;
+                page-break-inside: avoid;
+            }
+            
+            .recipient-section {
+                page-break-inside: avoid;
+            }
+            
+            .closing-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="applicant-name">{{ cover_letter_info.name }}</div>
+            {% if cover_letter_info.title %}
+            <div class="job-title">{{ cover_letter_info.title }}</div>
+            {% endif %}
+            
+            <div class="contact-info">
+                {% if cover_letter_info.email %}
+                <div class="contact-item">{{ cover_letter_info.email }}</div>
+                {% endif %}
+                {% if cover_letter_info.phone %}
+                <div class="contact-item">{{ cover_letter_info.phone }}</div>
+                {% endif %}
+                {% if cover_letter_info.location %}
+                <div class="contact-item">{{ cover_letter_info.location }}</div>
+                {% endif %}
+                {% if cover_letter_info.linkedin %}
+                <div class="contact-item">{{ cover_letter_info.linkedin }}</div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Date -->
+        <div class="date-section">
+            {{ cover_letter_info.date }}
+        </div>
+        
+        <!-- Recipient Information -->
+        {% if cover_letter_info.hiring_manager_name or cover_letter_info.company_name %}
+        <div class="recipient-section">
+            {% if cover_letter_info.hiring_manager_name %}
+            <div class="recipient-name">{{ cover_letter_info.hiring_manager_name }}</div>
+            {% endif %}
+            {% if cover_letter_info.company_name %}
+            <div class="company-name">{{ cover_letter_info.company_name }}</div>
+            {% endif %}
+            {% if cover_letter_info.company_address %}
+            <div class="company-address">{{ cover_letter_info.company_address }}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <!-- Greeting -->
+        <div class="greeting">
+            {% if cover_letter_info.hiring_manager_name %}
+            Dear {{ cover_letter_info.hiring_manager_name }},
+            {% else %}
+            Dear Hiring Manager,
+            {% endif %}
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            {% if cover_letter_info.paragraphs %}
+                {% for paragraph in cover_letter_info.paragraphs %}
+                <div class="paragraph">{{ paragraph }}</div>
+                {% endfor %}
+            {% elif cover_letter_info.paragraph %}
+                {% if cover_letter_info.paragraph is iterable and cover_letter_info.paragraph is not string %}
+                    {% for para in cover_letter_info.paragraph %}
+                    <div class="paragraph">{{ para }}</div>
+                    {% endfor %}
+                {% else %}
+                    <div class="paragraph">{{ cover_letter_info.paragraph }}</div>
+                {% endif %}
+            {% else %}
+            <div class="paragraph">
+                I am writing to express my interest in joining <span class="company-highlight">{% if cover_letter_info.company_name %}{{ cover_letter_info.company_name }}{% else %}your organization{% endif %}</span>. Your commitment to excellence aligns with my professional values and career goals.
+            </div>
+            
+            <div class="paragraph">
+                Throughout my career, I have developed strong skills in <span class="skill-highlight">problem-solving</span>, <span class="skill-highlight">team collaboration</span>, and <span class="skill-highlight">project management</span>. I am confident that my experience and dedication make me a strong candidate for this position.
+            </div>
+            
+            <div class="paragraph">
+                I am particularly drawn to {% if cover_letter_info.company_name %}<span class="company-highlight">{{ cover_letter_info.company_name }}</span>{% else %}your organization{% endif %} because of your reputation for innovation and professional development. I am excited about the opportunity to contribute to your team's success.
+            </div>
+            
+            <div class="paragraph">
+                Thank you for considering my application. I would welcome the opportunity to discuss how my background and skills can benefit your organization. I look forward to hearing from you.
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Closing -->
+        <div class="closing-section">
+            <div class="closing">
+                {% if cover_letter_info.closing %}{{ cover_letter_info.closing }},{% else %}Sincerely,{% endif %}
+            </div>
+            
+            <div class="printed-name">{{ cover_letter_info.name }}</div>
+        </div>
+    </div>
+</body>
+</html>

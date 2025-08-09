@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cover Letter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            padding: 40px;
+            color: #333333;
+            line-height: 1.6;
+            font-size: 12px;
+            margin: 0;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #cccccc;
+        }
+        
+        .name {
+            font-size: 22px;
+            color: #000000;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .title {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        
+        .contact-info {
+            font-size: 11px;
+            color: #555555;
+            line-height: 1.4;
+        }
+        
+        .date {
+            text-align: right;
+            margin-bottom: 25px;
+            font-size: 11px;
+            color: #666666;
+        }
+        
+        .recipient {
+            margin-bottom: 25px;
+            padding: 12px;
+            background-color: #f8f8f8;
+            border-left: 3px solid #666666;
+        }
+        
+        .recipient-name {
+            font-size: 12px;
+            color: #000000;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        
+        .recipient-company {
+            font-size: 11px;
+            color: #555555;
+        }
+        
+        .salutation {
+            margin-bottom: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #333333;
+        }
+        
+        .letter-content {
+            margin-bottom: 25px;
+        }
+        
+        .paragraph {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+            padding-left: 8px;
+            border-left: 1px solid #dddddd;
+        }
+        
+        .closing-section {
+            margin-top: 25px;
+        }
+        
+        .closing {
+            margin-bottom: 35px;
+            font-size: 12px;
+            color: #555555;
+        }
+        
+        .signature {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #666666;
+            display: inline-block;
+            min-width: 150px;
+        }
+        
+        /* PDFKit-safe utility classes */
+        .bold {
+            font-weight: bold;
+        }
+        
+        .italic {
+            font-style: italic;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .right {
+            text-align: right;
+        }
+        
+        .highlight {
+            color: #666666;
+            font-weight: bold;
+        }
+        
+        /* Simple spacing utilities */
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+        
+        .mb-15 {
+            margin-bottom: 15px;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="name">{{ cover_letter_info.name }}</div>
+        {% if cover_letter_info.title %}
+        <div class="title">{{ cover_letter_info.title }}</div>
+        {% endif %}
+        <div class="contact-info">
+            {% if cover_letter_info.email and cover_letter_info.phone %}
+            {{ cover_letter_info.email }} • {{ cover_letter_info.phone }}
+            {% elif cover_letter_info.email %}
+            {{ cover_letter_info.email }}
+            {% elif cover_letter_info.phone %}
+            {{ cover_letter_info.phone }}
+            {% endif %}
+            {% if cover_letter_info.location %}
+            <br>{{ cover_letter_info.location }}
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Date -->
+    <div class="date">
+        {{ cover_letter_info.date }}
+    </div>
+    
+    <!-- Recipient Information -->
+    {% if cover_letter_info.hiring_manager_name or cover_letter_info.company_name %}
+    <div class="recipient">
+        {% if cover_letter_info.hiring_manager_name %}
+        <div class="recipient-name">{{ cover_letter_info.hiring_manager_name }}</div>
+        {% endif %}
+        {% if cover_letter_info.company_name %}
+        <div class="recipient-company">{{ cover_letter_info.company_name }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    <!-- Salutation -->
+    <div class="salutation">
+        {% if cover_letter_info.hiring_manager_name %}
+        Dear {{ cover_letter_info.hiring_manager_name }},
+        {% else %}
+        Dear Hiring Manager,
+        {% endif %}
+    </div>
+    
+    <!-- Letter Body -->
+    <div class="letter-content">
+        {% if cover_letter_info.paragraphs %}
+            {% for paragraph in cover_letter_info.paragraphs %}
+            <div class="paragraph">{{ paragraph }}</div>
+            {% endfor %}
+        {% elif cover_letter_info.paragraph %}
+            {% if cover_letter_info.paragraph is iterable and cover_letter_info.paragraph is not string %}
+                {% for para in cover_letter_info.paragraph %}
+                <div class="paragraph">{{ para }}</div>
+                {% endfor %}
+            {% else %}
+                <div class="paragraph">{{ cover_letter_info.paragraph }}</div>
+            {% endif %}
+        {% else %}
+        <div class="paragraph">
+            I am writing to express my strong interest in joining {% if cover_letter_info.company_name %}{{ cover_letter_info.company_name }}{% else %}your organization{% endif %}. With my background and experience, I am confident that I would be a valuable addition to your team.
+        </div>
+        
+        <div class="paragraph">
+            Throughout my career, I have developed a comprehensive skill set that aligns perfectly with the requirements of this position. My passion for excellence and commitment to delivering high-quality results make me an ideal candidate for this role.
+        </div>
+        
+        <div class="paragraph">
+            I would welcome the opportunity to discuss how my skills and experience can contribute to {% if cover_letter_info.company_name %}{{ cover_letter_info.company_name }}'s{% else %}your organization's{% endif %} continued success. Thank you for considering my application, and I look forward to hearing from you soon.
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Closing -->
+    <div class="closing-section">
+        <div class="closing">
+            {% if cover_letter_info.closing %}{{ cover_letter_info.closing }},{% else %}Sincerely,{% endif %}
+        </div>
+        <div class="signature">
+            {{ cover_letter_info.name }}
+        </div>
+    </div>
+</body>
+</html>

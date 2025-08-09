@@ -271,7 +271,7 @@ def load_profile_image(image_path="5-min.jpg"):
 profile_image_base64 = load_profile_image("5.jpg")
 
 data = {
-    # "template_name": "modern7",
+    "template_name": "modern1",
     "personal_info": {
         "name": "Ava jdksjdks",
         "title": "Senior Grapgner",
@@ -286,30 +286,9 @@ data = {
         {
             "name": "Dribbble",
             "url": "https://dribbble.com/ava"
-        },
-        {
-            "name": "Portfolio",
-            "url": "https://avaportfolio.com"
-        },
-        {
-            "name": "Dribbble",
-            "url": "https://dribbble.com/ava"
-        },
-        {
-            "name": "Dribbble",
-            "url": "https://dribbble.com/ava"
-        },
-        {
-            "name": "Dribbble",
-            "url": "https://dribbble.com/ava"
-        },
-        {
-            "name": "Dribbble",
-            "url": "https://dribbble.com/ava"
-        }
-    ],
+        }],
     "professional_summary": "Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries. Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries.Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries.Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries.Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries.Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries.Led the branding and visual identity for 20+ clients across tech, fashion, and hospitality industries.",
-    # "page_size": "A4",
+    "page_size": "letter",
     "work_experience": [
         {
             "company": "Lime & Co. Creative Agency",
@@ -334,117 +313,9 @@ data = {
         "Brand Identity Design",
         "Adobe Creative Suite",
         "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-                "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
-        "Adobe",
-        "Brand Identity Design",
-        "Adobe Creative Suite",
+        "Brand Identity Design"
     ],
     "academic_projects": [
-        {
-            "title": "Branding for Local Farmers Market",
-            "date": "Fall 2013",
-            "technologies": "Illustrator, InDesign, Photoshop",
-            "description": """
-                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
-            """,
-            "links": {
-                "Portfolio": "https://avamartinezdesign.com/farmers-market"
-            }
-        },
-        {
-            "title": "Branding for Local Farmers Market",
-            "date": "Fall 2013",
-            "technologies": "Illustrator, InDesign, Photoshop",
-            "description": """
-                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
-            """,
-            "links": {
-                "Portfolio": "https://avamartinezdesign.com/farmers-market"
-            }
-        },
-        {
-            "title": "Branding for Local Farmers Market",
-            "date": "Fall 2013",
-            "technologies": "Illustrator, InDesign, Photoshop",
-            "description": """
-                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
-            """,
-            "links": {
-                "Portfolio": "https://avamartinezdesign.com/farmers-market"
-            }
-        },
-        {
-            "title": "Branding for Local Farmers Market",
-            "date": "Fall 2013",
-            "technologies": "Illustrator, InDesign, Photoshop",
-            "description": """
-                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
-            """,
-            "links": {
-                "Portfolio": "https://avamartinezdesign.com/farmers-market"
-            }
-        },
-        {
-            "title": "Branding for Local Farmers Market",
-            "date": "Fall 2013",
-            "technologies": "Illustrator, InDesign, Photoshop",
-            "description": """
-                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
-            """,
-            "links": {
-                "Portfolio": "https://avamartinezdesign.com/farmers-market"
-            }
-        },
         {
             "title": "Branding for Local Farmers Market",
             "date": "Fall 2013",
@@ -467,16 +338,6 @@ data = {
             "description": """
                 Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
             """
-        },
-        {
-            "name": "Graphic Design Specialization",
-            "issuer": "Coursera | CalArts",
-            "date": "2020-04-01",
-            "credential_id": "CALARTS-GDS-456789",
-            "url": "https://coursera.org/graphicdesign",
-            "description": """
-                Created a visual identity system including logo, signage, and promotional posters. Received campus-wide recognition and used in real-world local market.
-            """
         }
     ],
     "publications": [
@@ -496,38 +357,12 @@ data = {
         "Photography",
         "Poster collecting",
         "Travel sketching",
-        "Calligraphy",
-                "Digital illustration",
-        "Photography",
-        "Poster collecting",
-        "Travel sketching",
-        "Calligraphy",
-                "Digital illustration",
-        "Photography",
-        "Poster collecting",
-        # "Travel sketching",
-        # "Calligraphy",
-        #         "Digital illustration",
-        # "Photography",
-        # "Poster collecting",
-        # "Travel sketching",
-        # "Calligraphy",
-        #         "Digital illustration",
-        # "Photography",
-        # "Poster collecting",
-        # "Travel sketching",
         "Calligraphy"
     ],
     "languages": [
         "English",
         "French",
-        # "jdskjd",
-        # "jdskjd",
-        # "jdskjd",
-        # "English",
-        # "French",
-        # "jdskjd",
-        # "jdskjd"
+       
     ],
     "referees": [
         {

@@ -7,3 +7,15 @@ python-dotenv
 jinja2
 PyYAML
 typing-extensions
+
+weasyprint
+pillow
+python-multipart
+python-docx
+PyPDF2
+groq
+pdfplumber
+PyJWT==2.8.0
+python-multipart==0.0.6
+python-magic==0.4.27
+passlib[bcrypt]==1.7.4
