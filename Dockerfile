@@ -44,27 +44,43 @@
 
 
 
-
 FROM python:3.9-slim
 
-# Install system dependencies including wkhtmltopdf and fonts
+# Set environment variables to avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update package list and install basic dependencies first
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    software-properties-common \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install wkhtmltopdf and basic tools
 RUN apt-get update && apt-get install -y \
     wkhtmltopdf \
     xvfb \
     fontconfig \
-    fonts-dejavu-core \
-    fonts-liberation \
-    fonts-dejavu-extra \
-    fonts-noto \
-    fonts-open-sans \
-    ttf-mscorefonts-installer \
     && rm -rf /var/lib/apt/lists/*
 
-# Accept Microsoft fonts EULA
-RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+# Install available fonts (removing problematic ones)
+RUN apt-get update && apt-get install -y \
+    fonts-dejavu-core \
+    fonts-dejavu-extra \
+    fonts-liberation \
+    fonts-noto-core \
+    fonts-freefont-ttf \
+    && rm -rf /var/lib/apt/lists/*
+
+# Try to install Microsoft fonts (optional - will continue if it fails)
+RUN apt-get update && \
+    (echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
+    apt-get install -y --no-install-recommends ttf-mscorefonts-installer || echo "Microsoft fonts installation failed, continuing...") && \
+    rm -rf /var/lib/apt/lists/*
 
 # Update font cache
-RUN fc-cache -fv
+RUN fc-cache -fv || echo "Font cache update failed, continuing..."
 
 # Set working directory
 WORKDIR /app
