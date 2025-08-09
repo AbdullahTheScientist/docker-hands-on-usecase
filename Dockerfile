@@ -43,44 +43,20 @@
 
 
 
-
 FROM python:3.9-slim
 
-# Set environment variables to avoid interactive prompts
+# Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update package list and install basic dependencies first
-RUN apt-get update && apt-get install -y \
-    wget \
-    gnupg \
-    software-properties-common \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install wkhtmltopdf and basic tools
+# Install only essential packages
 RUN apt-get update && apt-get install -y \
     wkhtmltopdf \
     xvfb \
     fontconfig \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install available fonts (removing problematic ones)
-RUN apt-get update && apt-get install -y \
     fonts-dejavu-core \
-    fonts-dejavu-extra \
     fonts-liberation \
-    fonts-noto-core \
-    fonts-freefont-ttf \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-# Try to install Microsoft fonts (optional - will continue if it fails)
-RUN apt-get update && \
-    (echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
-    apt-get install -y --no-install-recommends ttf-mscorefonts-installer || echo "Microsoft fonts installation failed, continuing...") && \
-    rm -rf /var/lib/apt/lists/*
-
-# Update font cache
-RUN fc-cache -fv || echo "Font cache update failed, continuing..."
 
 # Set working directory
 WORKDIR /app
