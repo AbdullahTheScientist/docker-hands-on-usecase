@@ -19,3 +19,21 @@ PyJWT==2.8.0
 python-multipart==0.0.6
 python-magic==0.4.27
 passlib[bcrypt]==1.7.4
+
+
+
+
+fastapi==0.104.1
+uvicorn==0.24.0
+gunicorn==21.2.0
+jinja2==3.1.2
+pdfkit==1.0.0
+PyPDF2==3.0.1
+python-multipart==0.0.6
+python-dotenv==1.0.0
+Pillow==10.1.0
+pydantic==2.5.0
+typing-extensions==4.8.0
+
+# Additional dependencies for better error handling
+psutil==5.9.6
