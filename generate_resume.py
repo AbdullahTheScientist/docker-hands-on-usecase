@@ -94,12 +94,19 @@ def generate_coverletter(data):
     options = {
         'page-size': f'{pagesize}',
         'margin-top': '0.50in',
-        'margin-right': '0.50in',
+        'margin-right': '0.50in', 
         'margin-bottom': '0.50in',
         'margin-left': '0.50in',
-        'encoding': "UTF-8",
+        'encoding': 'UTF-8',
         'no-outline': None,
-        'enable-local-file-access': None
+        'enable-local-file-access': None,
+        # ADD THESE FOR CONSISTENCY:
+        'disable-smart-shrinking': None,
+        'print-media-type': None,
+        'viewport-size': '1024x768',
+        'javascript-delay': 2000,
+        'dpi': 300,
+        'zoom': 1.0
     }
 
     # Generate PDF with config
@@ -109,6 +116,4 @@ def generate_coverletter(data):
         return output_file
     except Exception as e:
         raise Exception(f"PDF generation failed: {str(e)}")
-
-
 

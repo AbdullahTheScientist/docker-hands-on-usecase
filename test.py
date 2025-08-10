@@ -251,9 +251,9 @@ import json
 import base64
 import os
 
-# BASE_URL = 'http://localhost:8000'
+BASE_URL = 'http://localhost:8000'
 
-BASE_URL = 'https://docker-hands-on-usecase.onrender.com'
+# BASE_URL = 'https://docker-hands-on-usecase.onrender.com'
 
 def load_profile_image(image_path="5-min.jpg"):
     """Load and encode profile image to base64"""
