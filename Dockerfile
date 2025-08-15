@@ -1,36 +1,49 @@
+# Use Python base image
 FROM python:3.9-slim
 
-# Install system dependencies including wkhtmltopdf
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    wkhtmltopdf \
+    wget \
     xvfb \
+    fontconfig \
+    libfreetype6 \
+    libjpeg62-turbo \
+    libx11-6 \
+    libxcb1 \
+    libxext6 \
+    libxrender1 \
+    libssl3 \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
+
+# Download and install wkhtmltopdf
+RUN wget -q https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb \
+    && dpkg -i wkhtmltox_0.12.6.1-3.bookworm_amd64.deb || true \
+    && apt-get update && apt-get install -f -y \
+    && rm wkhtmltox_0.12.6.1-3.bookworm_amd64.deb
+
+# Verify installation
+RUN wkhtmltopdf --version
 
 # Set working directory
 WORKDIR /app
 
-# Copy requirements first for better caching
+# Copy requirements and install Python dependencies
 COPY requirements.txt .
-
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy application files
 COPY . .
 
-# Create directories
-RUN mkdir -p templates generated_resumes
+# Create necessary directories
+RUN mkdir -p templates generated_resumes cover_letters
 
 # Expose port
 EXPOSE 8000
 
-# Create startup script
-RUN echo '#!/bin/bash\nPORT=${PORT:-8000}\nexec gunicorn app:app -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$PORT' > /start.sh
-RUN chmod +x /start.sh
-
-# Run the application
-CMD ["/start.sh"]
-
-
-
-
+# Start the application
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
