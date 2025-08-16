@@ -13,7 +13,7 @@ AUTHOR_EMAIL = "abdullahmazri124@gmail.com"
 
 
 setuptools.setup(
-    name=SRC_REPO,
+    name="BestResumeMaker",
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
