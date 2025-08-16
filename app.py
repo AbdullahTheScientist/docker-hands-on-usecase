@@ -532,7 +532,7 @@ def create_resume(data: ResumeRequest, background_tasks: BackgroundTasks, dep=De
         logger.error(f"Resume generation/compression failed: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Resume generation failed: {str(e)}")
 
-from docker-hands-on-usecase.components.ai_helper import enhance_profile_summary,analyze_resume_against_jd,  enhance_professional_experience, enhance_project_description
+from BestResumeMaker.components.ai_helper import enhance_profile_summary,analyze_resume_against_jd,  enhance_professional_experience, enhance_project_description
 
 @app.post("/generate-cover-letter/")
 def create_cover_letter(data: CoverLetterRequest, background_tasks: BackgroundTasks):
