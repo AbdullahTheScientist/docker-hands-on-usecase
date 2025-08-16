@@ -30,4 +30,4 @@ requests
 asyncio
 
 # Install the current package in editable mode
--e .
+# -e .
