@@ -1,9 +1,9 @@
 import requests
 import json
 
-# BASE_URL = "http://localhost:8000"  # Change to your URL
+BASE_URL = "http://localhost:8000"  # Change to your URL
 
-BASE_URL = "https://bestresumemaker.onrender.com" 
+BASE_URL = "https://docker-hands-on-usecase.onrender.com" 
 # Test 1: Enhance Summary
 def quick_test_enhance_summary():
     data = {

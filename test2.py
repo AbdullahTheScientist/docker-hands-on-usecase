@@ -5,8 +5,8 @@ import base64
 from datetime import datetime
 import os
 
-# BASE_URL = 'http://localhost:8000'
-BASE_URL = 'https://docker-hands-on-usecase.onrender.com'
+BASE_URL = 'http://localhost:8000'
+# BASE_URL = 'https://docker-hands-on-usecase.onrender.com'
 data = {
     "cover_letter_info": {
         "template_name": "10",

@@ -13,6 +13,9 @@ load_dotenv()
 
 # --- API KEY POOL MANAGEMENT ---
 
+import os
+print("Available keys:", [k for k in os.environ if k.startswith("GROQ_API_KEY")])
+
 def load_groq_api_keys():
     keys = []
     i = 1

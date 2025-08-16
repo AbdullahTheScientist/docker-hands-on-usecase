@@ -1,3 +1,4 @@
+# Project dependencies
 fastapi
 uvicorn[standard]
 gunicorn
@@ -8,27 +9,24 @@ jinja2
 PyYAML
 typing-extensions
 
-pillow
+Pillow
 python-multipart
 python-docx
 PyPDF2
 groq
 pdfplumber
 PyJWT
-python-multipart
 python-magic
 passlib[bcrypt]
-
-
-
-
 
 # Additional dependencies for better error handling
 psutil
 
 # Font handling and text processing
 fonttools
-Pillow
 
 # For better error handling and debugging
 requests
+
+# Install the current package in editable mode
+-e .
