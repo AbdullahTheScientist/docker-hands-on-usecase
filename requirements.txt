@@ -27,6 +27,7 @@ fonttools
 
 # For better error handling and debugging
 requests
+asyncio
 
 # Install the current package in editable mode
--e .
+# -e .
