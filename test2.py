@@ -9,7 +9,7 @@ BASE_URL = 'http://localhost:8000'
 # BASE_URL = 'https://docker-hands-on-usecase.onrender.com'
 data = {
     "cover_letter_info": {
-        "template_name": "10",
+        "template_name": "08",
         "page_size":"letter",
         "name": "Muhammad Abdullah",
         'date': datetime.now().strftime("%B %d, %Y"),

@@ -532,8 +532,7 @@ def create_resume(data: ResumeRequest, background_tasks: BackgroundTasks, dep=De
         logger.error(f"Resume generation/compression failed: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Resume generation failed: {str(e)}")
 
-from src.BestResumeMaker.components.ai_helper import enhance_profile_summary,analyze_resume_against_jd,  enhance_professional_experience, enhance_project_description
-
+from ai_helper import enhance_profile_summary,analyze_resume_against_jd, enhance_paragraph, enhance_professional_experience, enhance_project_description
 @app.post("/generate-cover-letter/")
 def create_cover_letter(data: CoverLetterRequest, background_tasks: BackgroundTasks):
     """Generate and compress cover letter PDF"""
@@ -638,6 +637,24 @@ async def enhance_project(request: TextRequest, dep=Depends(rate_limiter)):
     except Exception as e:
         logger.error(f"Error enhancing project: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@app.post("/enhance_paragraph")
+async def enhanced_paragraph(request: TextRequest, dep=Depends(rate_limiter)):
+    """Enhance profile summary"""
+    try:
+        logger.info("paragraph enhancement requested")
+        if not request.text.strip():
+            raise HTTPException(status_code=400, detail="Text field cannot be empty")
+        
+        result = enhance_paragraph(request.text)
+        logger.info("paragraph enhancement completed successfully")
+        return {"enhanced_paragraph": result}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error enhancing paragrph: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
 
 @app.post('/analyze-resume')
 async def analyze_resume_api(

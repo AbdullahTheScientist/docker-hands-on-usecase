@@ -11,6 +11,8 @@ from docx import Document
 
 load_dotenv()
 
+# os.chdir("D:\docker-hands-on-usecase\src\BestResumeMaker\components")  # Windows
+
 # --- API KEY POOL MANAGEMENT ---
 
 import os
@@ -233,6 +235,24 @@ def enhance_project_description(project_desc: str) -> str:
         "Format it as a single paragraph, limited to less than 3 lines. "
         "Do not use bullet points, headers, or any extra labels—only return the enhanced paragraph:\n\n"
         f"{project_desc}"
+    )
+    completion = client_pool.chat_completion(
+        model="meta-llama/llama-4-scout-17b-16e-instruct",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+        max_completion_tokens=512,
+        top_p=1,
+        stream=False
+    )
+    return completion.choices[0].message.content.strip()
+
+
+
+def enhance_paragraph(summary: str) -> str:
+    prompt = (
+        "You are a professional cover letter writer. Rewrite the following cover letter text to a single paragraph to make it more impactful, concise, and professional. "
+        "Ensure the result is a single paragraph with no bullet points, and do not include any introductory or explanatory text—return only the improved paragraph for cover letter:\n\n"
+        f"{summary}"
     )
     completion = client_pool.chat_completion(
         model="meta-llama/llama-4-scout-17b-16e-instruct",

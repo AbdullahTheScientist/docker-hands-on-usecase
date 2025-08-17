@@ -3,7 +3,6 @@ import json
 
 BASE_URL = "http://localhost:8000"  # Change to your URL
 
-BASE_URL = "https://docker-hands-on-usecase.onrender.com" 
 # Test 1: Enhance Summary
 def quick_test_enhance_summary():
     data = {
@@ -30,6 +29,16 @@ def quick_test_enhance_project():
     response = requests.post(f"{BASE_URL}/enhance_project", json=data)
     print("Enhance Project Response:")
     print(json.dumps(response.json(), indent=2))
+
+# Test 1: Enhance Summary
+def quick_test_enhance_paragraph():
+    data = {
+        "text": "I wana join google."
+    }
+    response = requests.post(f"{BASE_URL}/enhance_paragraph", json=data)
+    print("Enhance Summary Response:")
+    print(json.dumps(response.json(), indent=2))
+
 
 # Test 4: Analyze Resume with PDF
 def test_with_pdf():
@@ -91,7 +100,9 @@ if __name__ == "__main__":
     try:
         quick_health_check()
         print("\n" + "-"*50 + "\n")
-        
+        quick_test_enhance_paragraph()
+        print("\n" + "-"*50 + "\n")
+        time.sleep
         quick_test_enhance_summary()
         print("\n" + "-"*50 + "\n")
         time.sleep(6)

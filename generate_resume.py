@@ -38,10 +38,10 @@ def generate_resume(data):
     # PDF generation options
     options = {
         'page-size': f'{pagesize}',
-        # 'margin-top': '0.50in',
-        # 'margin-right': '0.50in',
-        # 'margin-bottom': '0.50in',
-        # 'margin-left': '0.50in',
+        'margin-top': '0.50in',
+        'margin-right': '0.50in',
+        'margin-bottom': '0.50in',
+        'margin-left': '0.50in',
         'encoding': "UTF-8",
         'no-outline': None,
         'enable-local-file-access': None
